@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
-<h1>Use this page to enter details about an upcoming gig</h1>
+<h1>Enter the name of the venue for the gig:</h1>
 
 
 <div class="form">
 	<form method="POST" action="">
 		{{ form.hidden_tag() }}
 		<div class="form-group">
-			{{ form.title.label }}
+			{{ form..label }}
 			{{ form.title }}
 			{% if form.title.errors %}
 			<div class="error">

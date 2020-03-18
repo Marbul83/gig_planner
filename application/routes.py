@@ -1,65 +1,25 @@
-from application import app, db, bcrypt
+from application import app, db
 from flask import render_template, redirect, url_for, request
-from application.forms import PostForm, RegistrationForm, LoginForm, UpdateAccountForm
-from application.models import Posts, Users
-from flask_login import login_user, current_user, logout_user, login_required
+from application.forms import BandForm, VenueForm
+from application.models import Bands, Venues
 
 
 @app.route('/')
 @app.route('/home')
 def home():
-	postData = Posts.query.all()
-	return render_template('home.html', title='Home', posts=postData)
+	return render_template('home.html', title='Home')
 
 @app.route('/about')
 def about():
     return render_template('about.html', title='about')
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-	if current_user.is_authenticated:
-		return redirect(url_for('home'))
-	form = RegistrationForm()
-	if form.validate_on_submit():
-		hash_pw = bcrypt.generate_password_hash(form.password.data)
-		user = Users(
-			first_name=form.first_name.data,
-			last_name=form.last_name.data,
-			email=form.email.data,
-			password=hash_pw
-			)
 
-		db.session.add(user)
-		db.session.commit()
 
-		return redirect(url_for('post'))
-
-	return render_template('register.html', title='Register', form=form)
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-	if current_user.is_authenticated:
-		return redirect(url_for('home'))
-	form = LoginForm()
-	if form.validate_on_submit():
-		user = Users.query.filter_by(email=form.email.data).first()
-		if user and bcrypt.check_password_hash(user.password, form.password.data):
-			login_user(user, remember=form.remember.data)
-			next_page = request.args.get('next')
-			if next_page:
-				return redirect(next_page)
-			else:
-				return redirect('home')
-	return render_template('login.html', title='Login', form=form)
-
-@app.route('/post', methods=['GET', 'POST'])
-@login_required
-def post():
-	form = PostForm()
+@app.route('/add_band', methods=['GET', 'POST'])
+def add_band():
+	form = BandForm()
 	if form.validate_on_submit():
 		postData = Posts(
-			title=form.title.data,
-			content=form.content.data,
-			author=current_user
+			band_name=form.band_name.data
 		)
 		db.session.add(postData)
 		db.session.commit()
@@ -67,39 +27,26 @@ def post():
 
 	else:
 		print(form.errors)
-	return render_template('post.html', title='Post', form=form)
+	return render_template('add_band.html', title='Add Band', form=form)
 
-@app.route('/logout')
-@login_required
-def logout():
-	logout_user()
-	return redirect(url_for('login'))
 
-@app.route('/account', methods=['GET', 'POST'])
-@login_required
-def account():
-	form = UpdateAccountForm()
+@app.route('/add_venue', methods=['GET', 'POST'])
+def add_venue():
+	form = VenueForm()
 	if form.validate_on_submit():
-		current_user.first_name = form.first_name.data
-		current_user.last_name = form.last_name.data
-		current_user.email = form.email.data
+		postData = Posts(
+			venue_name=form.venue_name.data
+		)
+		db.session.add(postData)
 		db.session.commit()
-		return redirect(url_for('account'))
-	elif request.method == 'GET':
-		form.first_name.data = current_user.first_name
-		form.last_name.data = current_user.last_name
-		form.email.data = current_user.email
-	return render_template('account.html', title='Account', form=form)
+		return redirect(url_for('home'))
 
-@app.route("/account/delete", methods=["GET", "POST"])
-@login_required
-def account_delete():
-        user = current_user.id
-        posts = Posts.query.filter_by(user_id=user)
-        for post in posts:
-                db.session.delete(post)
-        account = Users.query.filter_by(id=user).first()
-        logout_user()
-        db.session.delete(account)
-        db.session.commit()
-        return redirect(url_for('register'))
+	else:
+		print(form.errors)
+	return render_template('add_band.html', title='Add Band', form=form)
+
+
+
+#route for planner page needs to have a render template to two tables
+#that queries the two tables to pull up the results to add to planner page
+

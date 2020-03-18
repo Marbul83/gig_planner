@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
-<h1>Use this page to enter details about an upcoming gig</h1>
+<h1>You are going to see the following gigs:</h1>
 
 
 <div>
-    <h3>Band:{{ post.title }}</h3>
-    <span>by <i>{{ post.author.first_name }} {{post.author.last_name }}</i></span>
-    <span>at the <i>{{ post.date_posted }}</i></span>
-    <h3>{{ post.content }}</h3>
+    <h3>Band:{{ add_band.band_name }}</h3>
+    
+    <h3>at the <i>{{ add_venue.venue_name }}</i></h3>
+    
 </div>
 {% endblock body_content %}
 
