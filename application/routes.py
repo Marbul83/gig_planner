@@ -18,10 +18,10 @@ def about():
 def add_band():
 	form = BandForm()
 	if form.validate_on_submit():
-		postData = Posts(
+		bandData = Bands(
 			band_name=form.band_name.data
 		)
-		db.session.add(postData)
+		db.session.add(bandData)
 		db.session.commit()
 		return redirect(url_for('home'))
 
@@ -34,16 +34,16 @@ def add_band():
 def add_venue():
 	form = VenueForm()
 	if form.validate_on_submit():
-		postData = Posts(
+		venueData = Venues(
 			venue_name=form.venue_name.data
 		)
-		db.session.add(postData)
+		db.session.add(venueData)
 		db.session.commit()
 		return redirect(url_for('home'))
 
 	else:
 		print(form.errors)
-	return render_template('add_band.html', title='Add Band', form=form)
+	return render_template('add_venue.html', title='Add Venue', form=form)
 
 
 
