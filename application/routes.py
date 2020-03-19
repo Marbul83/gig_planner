@@ -23,7 +23,7 @@ def add_band():
 		)
 		db.session.add(bandData)
 		db.session.commit()
-		return redirect(url_for('home'))
+		return redirect(url_for('add_venue'))
 
 	else:
 		print(form.errors)
@@ -39,14 +39,16 @@ def add_venue():
 		)
 		db.session.add(venueData)
 		db.session.commit()
-		return redirect(url_for('home'))
+		return redirect(url_for('planner'))
 
 	else:
 		print(form.errors)
 	return render_template('add_venue.html', title='Add Venue', form=form)
 
 
-
+@app.route('/planner', methods=['GET', 'POST'])
+def planner():
+	return render_template('planner.html', title='Gig Planner')
 #route for planner page needs to have a render template to two tables
 #that queries the two tables to pull up the results to add to planner page
 
