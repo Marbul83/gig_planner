@@ -27,7 +27,7 @@ def add_band():
 
 	else:
 		print(form.errors)
-	return render_template('add_band.html', title='Add Band', form=form)
+	return render_template('home.html', title='Add Band', form=form)
 
 
 @app.route('/add_venue', methods=['GET', 'POST'])
