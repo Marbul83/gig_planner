@@ -9,8 +9,8 @@
 		{{ form.hidden_tag() }}
 		<div class="form-group">
 			{{ form.label }}
-			{{ form.title }}
-			{% if form.title.errors %}
+			{{ form.venue_name }}
+			{% if form.venue_name.errors %}
 			<div class="error">
 				{% for error in form.title.errors %}
 				    <span>{{ error }}</span>

@@ -18,7 +18,6 @@ class Venues(db.Model):
     venue_name = db.Column(db.String(30), nullable=False, unique=True)
     
     band_id = db.Column(db.Integer, db.ForeignKey('bands.id'), nullable=False)
-    #post = db.relationship('Posts', backref='author', lazy=True)
 
     def __repr__(self):
         return ''.join(['Venue: ', self.venue_name, '\r\n',
