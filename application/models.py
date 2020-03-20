@@ -2,12 +2,12 @@ from application import db
 
 
 class Gigs(db.Model):
-    band_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     db.Column('band_id', db.Integer, db.ForeignKey('bands.band_id')),
     db.Column('venue_id', db.Integer, db.ForeignKey('venues.venue_id'))
 
 class Bands(db.Model):
-    band_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     band_name = db.Column(db.String(60), nullable=False, unique=True)
 
     #gigplanner = db.relationship('Venues', secondary=gigs, backref=db.backref('gigplanner', lazy= True))
@@ -20,7 +20,7 @@ class Bands(db.Model):
 
         
 class Venues(db.Model):
-    venue_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     venue_name = db.Column(db.String(30), nullable=False, unique=True)
     gig = db.relationship('Bands', backref='plan', lazy=True)
 
@@ -28,7 +28,8 @@ class Venues(db.Model):
     #gigplanner = db.relationship('Venues', secondary=gigs, backref=db.backref('gigplanner', lazy= True))
 
     def __repr__(self):
-        return ''.join(['Venue: ', self.venue_name, '\r\n',
+        return ''.join([
+            'Venue: ', self.venue_name, '\r\n',
         ])
 
 
