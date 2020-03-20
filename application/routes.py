@@ -48,14 +48,6 @@ def add_venue():
 
 @app.route('/planner', methods=['GET', 'POST'])
 def planner():
-	{% for gig in gigs %}
-	<div>
-		<h3>You are going to see:</h3>
-		<p><b> Band:</b>{{ gig.plan.band_id }}</p>
-		<p><b> at:</b>{{ gig.plan.venue_id }}</p>
-		
-	</div>
-	{% endfor %}
 
 	# Query gigs table for band_id and venue_id set variables
 	# loop through all gigs
@@ -63,8 +55,6 @@ def planner():
 	# 	same for venue
 	#	add band name and venue name to a list
 	# pass list to planner
-
-	#for 
 
 	return render_template('planner.html', title='Gig Planner', add_band=bandData)
 
