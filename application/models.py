@@ -11,7 +11,7 @@ class Bands(db.Model):
     band_name = db.Column(db.String(60), nullable=False)
 
     #gigplanner = db.relationship('Venues', secondary=gigs, backref=db.backref('gigplanner', lazy= True))
-    venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'), nullable=False)
+    venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'))
 
     def __repr__(self):
         return ''.join([
