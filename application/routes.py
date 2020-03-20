@@ -57,7 +57,7 @@ def planner():
 	#	add band name and venue name to a list
 	# pass list to planner
 
-	return render_template('planner.html', title='Gig Planner', bandname=bandData)
+	return render_template('planner.html', title='Gig Planner', bands=bandData, venues=venueData)
 
 
 
