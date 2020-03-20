@@ -4,7 +4,6 @@ from application import db
 class Gigs(db.Model):
     db.Column('band_id', db.Integer, db.ForeignKey('bands.band_id')),
     db.Column('venue_id', db.Integer, db.ForeignKey('venues.venue_id'))
-    )
 
 class Bands(db.Model):
     band_id = db.Column(db.Integer, primary_key=True)
