@@ -18,7 +18,7 @@ def about():
 def add_band():
 	form = BandForm()
 	if form.validate_on_submit():
-		venue_id=request.arg.get("venue_id")
+		venue_id=request.args.get("venue_id")
 		bandData = Bands(
 			band_name=form.band_name.data,
 			plan=venue_id
