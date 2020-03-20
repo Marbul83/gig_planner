@@ -18,12 +18,14 @@ def about():
 def add_band():
 	form = BandForm()
 	if form.validate_on_submit():
+		venue_id=request.arg.get("venue_id")
 		bandData = Bands(
 			band_name=form.band_name.data
+			plan=venue_id
 		)
 		db.session.add(bandData)
 		db.session.commit()
-		return redirect(url_for('add_venue'))
+		return redirect(url_for('planner'))
 
 	else:
 		print(form.errors)
@@ -39,7 +41,7 @@ def add_venue():
 		)
 		db.session.add(venueData)
 		db.session.commit()
-		return redirect(url_for('planner'))
+		return redirect(url_for('add_band', venue_id=venueData.id))
 
 	else:
 		print(form.errors)
