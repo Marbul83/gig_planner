@@ -48,6 +48,7 @@ def add_venue():
 
 @app.route('/planner', methods=['GET', 'POST'])
 def planner():
+	bandData = Bands.query.all()
 	return render_template('planner.html', title='Gig Planner')
 #route for planner page needs to have a render template to two tables
 #that queries the two tables to pull up the results to add to planner page
