@@ -1,7 +1,7 @@
 from application import db
 
 
-    gigs = db.Table ('gigs',
+gigs = db.Table ('gigs',
     db.Column('band_id', db.Integer, db.ForeignKey('Bands.band_id')),
     db.Column('venue_id', db.Integer, db.ForeignKey('Venues.venue_id'))
     )
