@@ -19,9 +19,10 @@ def add_band():
 	form = BandForm()
 	if form.validate_on_submit():
 		venue_id=request.args.get("venue_id")
+		print(venue_id)
 		bandData = Bands(
 			band_name=form.band_name.data,
-			plan=venue_id
+			plan=int(venue_id)
 		)
 		db.session.add(bandData)
 		db.session.commit()
