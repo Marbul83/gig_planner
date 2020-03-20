@@ -3,8 +3,7 @@ from wtforms import StringField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, ValidationError
 
 class BandForm(FlaskForm):
-
-    Band_name = StringField('Band name',
+    band_name = StringField('Band name',
             validators = [
                 DataRequired(),
                 Length(min=2, max=100)
