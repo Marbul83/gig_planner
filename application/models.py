@@ -10,7 +10,7 @@ class Bands(db.Model):
     band_id = db.Column(db.Integer, primary_key=True)
     band_name = db.Column(db.String(60), nullable=False, unique=True)
 
-    gigplanner = db.Relationship('Venues', secondary=gigs, backref=db.backref('gigplanner', lazy= True))
+    gigplanner = db.relationship('Venues', secondary=gigs, backref=db.backref('gigplanner', lazy= True))
    
     venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'), nullable=False)
 
