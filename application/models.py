@@ -1,14 +1,14 @@
 from application import db
 
 
-class Gigs(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    db.Column('band_id', db.Integer, db.ForeignKey('bands.band_id')),
-    db.Column('venue_id', db.Integer, db.ForeignKey('venues.venue_id'))
+#class Gigs(db.Model):
+ #   id = db.Column(db.Integer, primary_key=True)
+  #  db.Column('band_id', db.Integer, db.ForeignKey('bands.band_id')),
+   # db.Column('venue_id', db.Integer, db.ForeignKey('venues.venue_id'))
 
 class Bands(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    band_name = db.Column(db.String(60), nullable=False, unique=True)
+    band_name = db.Column(db.String(60), nullable=False)
 
     #gigplanner = db.relationship('Venues', secondary=gigs, backref=db.backref('gigplanner', lazy= True))
     venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'), nullable=False)
