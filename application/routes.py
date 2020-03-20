@@ -48,8 +48,8 @@ def add_venue():
 
 @app.route('/planner', methods=['GET', 'POST'])
 def planner():
-	bandData = Bands.query.filter_by(band_id=bandname).first()
-	venueData = Venues.query.filter_by(venue_id=venuename).first()
+	bandData = Bands.query.filter_by(band_name=form.band_name.data).first()
+	venueData = Venues.query.filter_by(venue_name=form.venue_name.data).first()
 	# Query gigs table for band_id and venue_id set variables
 	# loop through all gigs
 	# 	bandData = Bands.query.filter_by(band_id=bandVariable).first()
