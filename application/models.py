@@ -31,6 +31,3 @@ class Venues(db.Model):
         return ''.join([
             'Venue: ', self.venue_name, '\r\n',
         ])
-
-
-# need to create composite db

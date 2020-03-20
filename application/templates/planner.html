@@ -6,12 +6,10 @@
 
 <div>
     {% for gig in gigs %}
-	<div>
 		<h3>You are going to see:</h3>
 		<p><b> Band:</b>{{ gig.plan.band_id }}</p>
 		<p><b> at:</b>{{ gig.plan.venue_id }}</p>
 		
-	</div>
 	{% endfor %}
     
 </div>
