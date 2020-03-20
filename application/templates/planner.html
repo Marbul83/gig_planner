@@ -5,10 +5,10 @@
 
 
 <div>
-    {% for gig in gigs %}
+    {% for band in bands %}
 		<h3>You are going to see:</h3>
-		<p><b> Band:</b>{{ gig.plan.band_id }}</p>
-		<p><b> at:</b>{{ gig.plan.venue_id }}</p>
+		<p><b> Band:</b>{{ band.band_name }}</p>
+		<p><b> at:</b>{{ band.plan.venue_name }}</p>
 		
 	{% endfor %}
     
