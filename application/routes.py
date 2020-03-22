@@ -56,13 +56,12 @@ def planner():
 	return render_template('planner.html', title='Gig Planner', bands=bandData)
 
 @app.route("/planner/delete", methods=["GET", "POST"])
-def plan_delete():
-        posts = Posts.query.filter_by(user_id=user)
-        for post in posts:
-                db.session.delete(post)
-        account = Users.query.filter_by(id=user).first()
-        db.session.delete(account)
+def planner_delete():
+        venue = Venues.query.filter_by(id=venue_id).first()
+        db.session.delete(venue)
+        #account = Users.query.filter_by(id=user).first()
+        #db.session.delete(account)
         db.session.commit()
-        return redirect(url_for('register'))
-
-
+        return redirect(url_for('planner'))
+	#return render_template('add_band.html', title='Add Band', form=form)
+	
