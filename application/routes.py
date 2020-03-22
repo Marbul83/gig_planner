@@ -52,19 +52,17 @@ def add_venue():
 @app.route('/planner', methods=['GET', 'POST'])
 def planner():
 	bandData = Bands.query.all()
-	# Query gigs table for band_id and venue_id set variables
-	# loop through all gigs
-	# 	bandData = Bands.query.filter_by(band_id=bandVariable).first()
-	# 	same for venue
-	#	add band name and venue name to a list
-	# pass list to planner
 
 	return render_template('planner.html', title='Gig Planner', bands=bandData)
 
+@app.route("/planner/delete", methods=["GET", "POST"])
+def plan_delete():
+        posts = Posts.query.filter_by(user_id=user)
+        for post in posts:
+                db.session.delete(post)
+        account = Users.query.filter_by(id=user).first()
+        db.session.delete(account)
+        db.session.commit()
+        return redirect(url_for('register'))
 
-
-
-
-#route for planner page needs to have a render template to two tables
-#that queries the two tables to pull up the results to add to planner page
 
