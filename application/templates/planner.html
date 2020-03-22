@@ -13,10 +13,11 @@
 
 	{% endfor %}
 
-	<form action="{{ url_for('planner_delete') }}">
-		<button type="submit">Delete your account</button>
-	</form>
-    
+	<div class='form'>
+		<form action="{{ url_for('planner_delete') }}">
+			<button type="submit">Delete your account</button>
+		</form>
+    </div>
 </div>
 {% endblock body_content %}
 
