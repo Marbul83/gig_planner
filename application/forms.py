@@ -20,3 +20,4 @@ class VenueForm(FlaskForm):
     )
 
     submit = SubmitField('Add Venue')
+
