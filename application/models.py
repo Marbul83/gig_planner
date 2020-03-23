@@ -21,7 +21,7 @@ class Bands(db.Model):
         
 class Venues(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    venue_name = db.Column(db.String(30), unique=True)
+    venue_name = db.Column(db.String(30), nullable=False, unique=True)
     gig = db.relationship('Bands', backref='plan', lazy=True)
 
 
@@ -31,3 +31,4 @@ class Venues(db.Model):
         return ''.join([
             'Venue: ', self.venue_name, '\r\n',
         ])
+        

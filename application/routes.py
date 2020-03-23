@@ -58,6 +58,8 @@ def planner():
 @app.route("/planner/delete/<int:venue_id>", methods=["GET", "POST"])
 def planner_delete(venue_id):
 		venue = Venues.query.filter_by(id=venue_id).first()
+		bands = Bands.query.filter_by(venue_id=venue_id).first()
+		db.session.delete(bands)
 		db.session.delete(venue)
 		db.session.commit()
 		return redirect(url_for('planner'))	
