@@ -62,6 +62,6 @@ def planner_delete():
         #account = Users.query.filter_by(id=user).first()
         #db.session.delete(account)
         db.session.commit()
-    return redirect(url_for('planner'))
+    	return redirect(url_for('planner'))
 	#return render_template('add_band.html', title='Add Band', form=form)
 	
