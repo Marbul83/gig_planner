@@ -60,6 +60,5 @@ def planner_delete(venue_id):
 		venue = Venues.query.filter_by(id=venue_id).first()
 		db.session.delete(venue)
 		db.session.commit()
-		return redirect(url_for('planner'))
-	
+		return redirect(url_for('planner'))	
 	
