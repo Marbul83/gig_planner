@@ -10,14 +10,15 @@
 		<p><b> Band:</b>{{ band.band_name }}</p>
 		<p><b> at:</b>{{ band.plan.venue_name }}</p>
 		
+		<div class='form'>
+			<form action="{{ url_for('planner_delete', venue_id=band.plan.id) }}">
+				<button type="submit">Delete your account</button>
+			</form>
+		</div>
 
 	{% endfor %}
 
-	<div class='form'>
-		<form action="{{ url_for('planner_delete') }}">
-			<button type="submit">Delete your account</button>
-		</form>
-    </div>
+	
 </div>
 {% endblock body_content %}
 
